@@ -10,7 +10,7 @@ RUN apt-get update -yqq \
 
 WORKDIR /usr/src/app
 
-COPY Gemfile* .
+COPY Gemfile* ./
 
 RUN gem install bundler
 RUN  bundle install --without test development
