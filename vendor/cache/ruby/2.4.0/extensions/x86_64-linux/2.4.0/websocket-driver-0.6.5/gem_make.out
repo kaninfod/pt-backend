@@ -1,0 +1,15 @@
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+/usr/local/bin/ruby -r ./siteconf20170503-5-1eum3j.rb extconf.rb
+creating Makefile
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20170503-5-ekgkbt

@@ -1,0 +1,20 @@
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/ruby-filemagic-0.7.1/ext/filemagic
+/usr/local/bin/ruby -r ./siteconf20170503-5-zsimhm.rb extconf.rb
+checking for -lgnurx... no
+checking for magic_open() in -lmagic... yes
+checking for magic.h... yes
+checking for magic_version()... yes
+checking for file/patchlevel.h... no
+creating Makefile
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/ruby-filemagic-0.7.1/ext/filemagic
+make "DESTDIR=" clean
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/ruby-filemagic-0.7.1/ext/filemagic
+make "DESTDIR="
+compiling filemagic.c
+linking shared-object filemagic/ruby_filemagic.so
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/ruby-filemagic-0.7.1/ext/filemagic
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ruby_filemagic.so ./.gem.20170503-5-w6lsw0/filemagic

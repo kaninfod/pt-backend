@@ -1,0 +1,21 @@
+production:
+  environment: production
+  instance_name: "Hinge"
+  filestorepath: "/media/phototank/photofiles"
+  filestoreurl: "http://192.168.2.103"
+  api_base_url: "http://localhost:5000"
+
+development:
+  environment: development
+  instance_name: "dev_Hinge"
+  incoming: "/media/phototank/incoming"
+  filestorepath: "/media/phototank/filestore"
+  filestoreurl: "http://localhost:5001"
+  api_base_url: "http://localhost:5000"
+
+test:
+  environment: test
+  instance_name: "test_Hingex"
+  filestorepath: "/Users/martinhinge/Pictures/test_migrate"
+  filestoreurl: "http://localhost:5001"
+  api_base_url: "http://localhost:5000"

@@ -1,0 +1,166 @@
+have_library: checking for -lgnurx... -------------------- no
+
+"gcc -o conftest -I/usr/local/include/ruby-2.4.0/x86_64-linux -I/usr/local/include/ruby-2.4.0/ruby/backward -I/usr/local/include/ruby-2.4.0 -I. -I/opt/local/include -I/usr/local/include -I/usr/include    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format  -fPIC conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/opt/local/lib -Wl,-R/opt/local/lib -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib -Wl,-R/usr/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R/usr/local/lib -L/usr/local/lib -lruby  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -o conftest -I/usr/local/include/ruby-2.4.0/x86_64-linux -I/usr/local/include/ruby-2.4.0/ruby/backward -I/usr/local/include/ruby-2.4.0 -I. -I/opt/local/include -I/usr/local/include -I/usr/include    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format  -fPIC conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/opt/local/lib -Wl,-R/opt/local/lib -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib -Wl,-R/usr/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R/usr/local/lib -L/usr/local/lib -lruby -lgnurx  -lpthread -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lgnurx
+collect2: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: 
+14: int t(void) { ; return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for magic_open() in -lmagic... -------------------- yes
+
+"gcc -o conftest -I/usr/local/include/ruby-2.4.0/x86_64-linux -I/usr/local/include/ruby-2.4.0/ruby/backward -I/usr/local/include/ruby-2.4.0 -I. -I/opt/local/include -I/usr/local/include -I/usr/include    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format  -fPIC conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/opt/local/lib -Wl,-R/opt/local/lib -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib -Wl,-R/usr/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R/usr/local/lib -L/usr/local/lib -lruby -lmagic  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:13:57: error: 'magic_open' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))magic_open; return !p; }
+                                                         ^
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option "-Wno-self-assign"
+cc1: warning: unrecognized command line option "-Wno-constant-logical-operand"
+cc1: warning: unrecognized command line option "-Wno-parentheses-equality"
+cc1: warning: unrecognized command line option "-Wno-tautological-compare"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))magic_open; return !p; }
+/* end */
+
+"gcc -o conftest -I/usr/local/include/ruby-2.4.0/x86_64-linux -I/usr/local/include/ruby-2.4.0/ruby/backward -I/usr/local/include/ruby-2.4.0 -I. -I/opt/local/include -I/usr/local/include -I/usr/include    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format  -fPIC conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/opt/local/lib -Wl,-R/opt/local/lib -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib -Wl,-R/usr/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R/usr/local/lib -L/usr/local/lib -lruby -lmagic  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void magic_open();
+14: int t(void) { magic_open(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for magic.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-2.4.0/x86_64-linux -I/usr/local/include/ruby-2.4.0/ruby/backward -I/usr/local/include/ruby-2.4.0 -I. -I/opt/local/include -I/usr/local/include -I/usr/include    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format  -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <magic.h>
+/* end */
+
+--------------------
+
+have_func: checking for magic_version()... -------------------- yes
+
+"gcc -o conftest -I/usr/local/include/ruby-2.4.0/x86_64-linux -I/usr/local/include/ruby-2.4.0/ruby/backward -I/usr/local/include/ruby-2.4.0 -I. -I/opt/local/include -I/usr/local/include -I/usr/include    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format  -fPIC conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/opt/local/lib -Wl,-R/opt/local/lib -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib -Wl,-R/usr/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lmagic  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby -lmagic  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:13:57: error: 'magic_version' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))magic_version; return !p; }
+                                                         ^
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option "-Wno-self-assign"
+cc1: warning: unrecognized command line option "-Wno-constant-logical-operand"
+cc1: warning: unrecognized command line option "-Wno-parentheses-equality"
+cc1: warning: unrecognized command line option "-Wno-tautological-compare"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))magic_version; return !p; }
+/* end */
+
+"gcc -o conftest -I/usr/local/include/ruby-2.4.0/x86_64-linux -I/usr/local/include/ruby-2.4.0/ruby/backward -I/usr/local/include/ruby-2.4.0 -I. -I/opt/local/include -I/usr/local/include -I/usr/include    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format  -fPIC conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/opt/local/lib -Wl,-R/opt/local/lib -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib -Wl,-R/usr/lib -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lmagic  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby -lmagic  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void magic_version();
+14: int t(void) { magic_version(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for file/patchlevel.h... -------------------- no
+
+"gcc -E -I/usr/local/include/ruby-2.4.0/x86_64-linux -I/usr/local/include/ruby-2.4.0/ruby/backward -I/usr/local/include/ruby-2.4.0 -I. -I/opt/local/include -I/usr/local/include -I/usr/include    -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format  -fPIC  conftest.c -o conftest.i"
+conftest.c:3:29: fatal error: file/patchlevel.h: No such file or directory
+ #include <file/patchlevel.h>
+                             ^
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <file/patchlevel.h>
+/* end */
+
+--------------------
+

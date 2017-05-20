@@ -1,0 +1,4 @@
+phototank:               rails server -p 3000
+Resque_worker_utility:   bundle exec rake environment resque:work QUEUE=utility TERM_CHILD=1 REDIS_NAMESPACE_QUIET=1
+Resque_worker_import:    bundle exec rake environment resque:work QUEUE=import TERM_CHILD=1 REDIS_NAMESPACE_QUIET=1
+Resque_Scheduler:        rake resque:scheduler

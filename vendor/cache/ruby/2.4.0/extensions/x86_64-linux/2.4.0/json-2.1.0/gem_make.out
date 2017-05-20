@@ -1,0 +1,13 @@
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/json-2.1.0/ext/json
+/usr/local/bin/ruby -r ./siteconf20170503-5-5h2eyg.rb extconf.rb
+creating Makefile
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" install

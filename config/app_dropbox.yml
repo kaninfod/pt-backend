@@ -1,0 +1,9 @@
+production:
+  environment: production
+  appkey: "cea457a609yecr1"
+  appsecret: "rvx7durrno11xip"
+
+development:
+  environment: development
+  appkey: "cea457a609yecr1"
+  appsecret: "rvx7durrno11xip"

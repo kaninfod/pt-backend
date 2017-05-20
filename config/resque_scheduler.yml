@@ -1,0 +1,5 @@
+update_master_catalog:
+  every: "30m"
+  class: "SchedulerMasterImport"
+  queue: "import"
+  description: ""

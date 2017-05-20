@@ -1,0 +1,9 @@
+production:
+  environment: production
+  appkey: "a52641f4fc5064f017257f7b312f3445"
+  appsecret: "eaf9c9a478fa37bd"
+
+development:
+  environment: development  
+  appkey: "a52641f4fc5064f017257f7b312f3445"
+  appsecret: "eaf9c9a478fa37bd"

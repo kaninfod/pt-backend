@@ -1,0 +1,3 @@
+FROM mysql
+
+RUN mkdir -p ./sql/data/

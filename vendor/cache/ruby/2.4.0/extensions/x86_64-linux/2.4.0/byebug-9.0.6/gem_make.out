@@ -1,0 +1,19 @@
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+/usr/local/bin/ruby -r ./siteconf20170503-5-hqtq3y.rb extconf.rb
+creating Makefile
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /usr/src/app/vendor/cache/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20170503-5-1rnqbsn/byebug
