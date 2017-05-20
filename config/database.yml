@@ -3,21 +3,21 @@ default: &default
   encoding: utf8
   username: <%= ENV["MYSQL_USER"] %>
   password: <%= ENV["MYSQL_PASSWORD"] %>
-  host: db
+  username: <%= ENV["MYSQL_USER"] %>
+  password: <%= ENV["MYSQL_PASSWORD"] %>
+  database: <%= ENV["MYSQL_DATABASE"] %>
+  host: <%= ENV["MYSQL_HOST"] %>
   port: 3306
 
 
 
 development:
   <<: *default
-  database: phototank
+
 
 test:
   <<: *default
-  database: phototank_test
+  
 
 production:
   <<: *default
-  username: <%= ENV["MYSQL_USER"] %>
-  password: <%= ENV["MYSQL_PASSWORD"] %>
-  database: phototank_prod
