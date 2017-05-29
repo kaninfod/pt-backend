@@ -5,12 +5,7 @@ docker network create   --driver overlay    phototankswarm
 
 Start the mysql service:
 ```
-docker service create --replicas 1 \
---name db -p 3306:3306 \
---network phototankswarm \
---env-file /home/pi/apps/phototank/phototank.backend/.env.prod \
---mount type=volume,volume-opt=o=addr=pizero.local,volume-opt=device=:/mnt/nfsserver/data/sql,volume-opt=type=nfs,source=db,target=/var/lib/mysql \
-hypriot/rpi-mysql
+docker service create --replicas 1 --name db -p 3306:3306 --network phototankswarm --env-file $PWD/.env.prod --mount type=bind,source=/mnt/nfsserver/mysql,destination=/var/lib/mysql hypriot/rpi-mysql
 ```
 
 Start the redis service:
@@ -27,26 +22,20 @@ Start the nginx service:
 docker service create --replicas 1 \
 --name nginx \
 --network phototankswarm \
---mount type=volume,volume-opt=o=addr=pizero.local,volume-opt=device=:/mnt/nfsserver/nginx,volume-opt=type=nfs,source=ngx,target=/tmp/conf_override \
+--mount type=bind,source=/mnt/nfsserver/nginx,destination=/tmp/conf_override \
 -p 8080:80 \
 drakerin/rpi-alpine-nginx
 ```
 
 ```
 docker service create --replicas 1 \
---name nginx \
+--name app \
 --network phototankswarm \
---mount type=volume,source=nfsshare,target=/pluto \
--e constraint:node==piuno \
--p 8080:80 \
+--mount type=bind,source=/mnt/nfsserver/rails,destination=/app/phototank \
+-p 3000:3000 \
 drakerin/rpi-alpine-nginx
-```
---mount type=volume,volume-opt=o=addr=pizero.local,volume-opt=device=:/mnt/nfsserver,volume-opt=type=nfs,source=pluto,target=/pluto
 
-docker service create --replicas 1 \
---name fileserver \
---network phototankswarm \
-hypriot/rpi-alpine-scratch
+```
 
 Launch portainer:
 
@@ -54,6 +43,15 @@ Launch portainer:
 docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock hypriot/rpi-portainer --swarm
 ```
 
+Launch visualizer:
+```
+docker service create \
+  --name=viz \
+  --publish=8080:8080/tcp \
+  --constraint=node.role==manager \
+  --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+  alexellis2/visualizer-arm:latest
+```
 
 Fix NFS on pimanager:
 
@@ -89,6 +87,8 @@ docker-machine create -d generic   --engine-storage-driver=overlay --swarm   --s
 ```
 
 
+Set up swarm environment:
+
 ```
 docker-machine create --driver generic --generic-ip-address=192.168.2.195 --generic-ssh-user=pirate --engine-storage-driver=overlay pizero
 
@@ -108,6 +108,12 @@ docker-machine ssh pidue docker swarm join --token $MANAGER_TOKEN $MANAGER_IP:23
 
 
 docker-machine ssh node1 docker node ls
+```
 
+Setup NFS:
+
+```
+https://www.htpcguides.com/configure-nfs-server-and-nfs-client-raspberry-pi/
+```
 
 
