@@ -17,6 +17,12 @@ docker service create --replicas 1 \
 armhf/redis
 ```
 
+Start rails service:
+
+```
+docker service create --replicas 1 --name app -p 3000:3000 --network phototankswarm --env-file $PWD/.env.prod pt-rails
+```
+
 Start the nginx service:
 ```
 docker service create --replicas 1 \
