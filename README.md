@@ -28,19 +28,9 @@ Start the nginx service:
 docker service create --replicas 1 \
 --name nginx \
 --network phototankswarm \
---mount type=bind,source=/mnt/nfsserver/nginx,destination=/tmp/conf_override \
--p 8080:80 \
+--mount type=bind,source=/mnt/fileserver/nginx,destination=/tmp/conf_override \
+-p 80:8080 \
 drakerin/rpi-alpine-nginx
-```
-
-```
-docker service create --replicas 1 \
---name app \
---network phototankswarm \
---mount type=bind,source=/mnt/nfsserver/rails,destination=/app/phototank \
--p 3000:3000 \
-drakerin/rpi-alpine-nginx
-
 ```
 
 Launch portainer:
