@@ -12,7 +12,7 @@ docker network create   --driver overlay    phototankswarm
 
 Start the mysql service:
 ```
-docker service create --replicas 1 --name db -p 3306:3306 --network phototankswarm --env-file $PWD/.env.prod --mount type=bind,source=/mnt/nfsserver/mysql,destination=/var/lib/mysql hypriot/rpi-mysql
+docker service create --replicas 1 --name db -p 3306:3306 --network phototankswarm --env-file $PWD/.env.prod --mount type=bind,source=/mnt/fileserver/mysql,destination=/var/lib/mysql hypriot/rpi-mysql
 ```
 
 Start the redis service:
@@ -27,7 +27,7 @@ armhf/redis
 Start rails service:
 
 ```
-docker service create --replicas 1 --name app -p 3000:3000 --network phototankswarm --env-file $PWD/.env.prod pt-rails
+docker service create --replicas 1 --name app -p 3000:3000 --network phototankswarm --env-file $PWD/.env.prod kaninfod/pt-rails
 ```
 
 Start the nginx service:
