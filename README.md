@@ -1,3 +1,10 @@
+run a stack:
+
+```
+docker stack deploy --compose-file=docker-compose.yml pt
+```
+
+
 create a network
 ```
 docker network create   --driver overlay    phototankswarm
