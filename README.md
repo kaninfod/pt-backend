@@ -12,7 +12,13 @@ docker network create   --driver overlay    phototankswarm
 
 Start the mysql service:
 ```
-docker service create --replicas 1 --name db -p 3306:3306 --network phototankswarm --env-file $PWD/.env.prod --mount type=bind,source=/mnt/fileserver/mysql,destination=/var/lib/mysql hypriot/rpi-mysql
+docker service create --replicas 1 \
+--name db -p 3306:3306 \
+--network phototankswarm \
+--env-file $PWD/.env.prod \
+--mount type=bind,source=/mnt/fileserver/mysql,destination=/var/lib/mysql \
+--constraint=node.hostname==pi2 \
+hypriot/rpi-mysql
 ```
 
 Start the redis service:
@@ -20,6 +26,7 @@ Start the redis service:
 docker service create --replicas 1 \
 --name redis \
 --network phototankswarm \
+--constraint=node.hostname==pi1 \
 -p 6379:6379 \
 armhf/redis
 ```
@@ -27,7 +34,12 @@ armhf/redis
 Start rails service:
 
 ```
-docker service create --replicas 1 --name app -p 3000:3000 --network phototankswarm --env-file $PWD/.env.prod kaninfod/pt-rails
+docker service create --replicas 1 \
+--name app -p 3000:3000 \
+--network phototankswarm \
+--env-file $PWD/.env.prod \
+--constraint=node.hostname==pi0 \
+kaninfod/pt-rails
 ```
 
 Start the nginx service:
@@ -37,6 +49,7 @@ docker service create --replicas 1 \
 --network phototankswarm \
 --mount type=bind,source=/mnt/fileserver/nginx,destination=/tmp/conf_override \
 -p 80:8080 \
+--constraint=node.hostname==pi1 \
 drakerin/rpi-alpine-nginx
 ```
 
