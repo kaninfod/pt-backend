@@ -55,6 +55,18 @@ docker service create --replicas 1 \
 drakerin/rpi-alpine-nginx
 ```
 
+Launch Log server:
+
+```
+docker service create --replicas 1 \
+--name logserver \
+--network phototankswarm \
+--constraint=node.hostname==pi2 \
+-p 2222:2222 \
+hypriot/rpi-alpine-scratch
+```
+
+
 Launch portainer:
 
 ```
