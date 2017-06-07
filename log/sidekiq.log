@@ -1,0 +1,101 @@
+# Logfile created on 2017-06-06 20:55:53 +0000 by logger.rb/56815
+2017-06-06T20:55:55.724Z 207 TID-5aro4 INFO: Booting Sidekiq 5.0.2 with redis options {:url=>"redis://redis:6379"}
+2017-06-06T20:55:57.147Z 207 TID-5aro4 INFO: Running in ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+2017-06-06T20:55:57.148Z 207 TID-5aro4 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2017-06-06T20:55:57.149Z 207 TID-5aro4 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2017-06-06T20:55:57.151Z 207 TID-5aro4 DEBUG: Client Middleware: 
+2017-06-06T20:55:57.152Z 207 TID-5aro4 DEBUG: Server Middleware: 
+2017-06-06T20:55:57.152Z 207 TID-5aro4 INFO: Starting processing, hit Ctrl-C to stop
+2017-06-06T20:55:57.191Z 207 TID-5aro4 DEBUG: {:queues=>["utility"], :labels=>[], :concurrency=>25, :require=>".", :environment=>nil, :timeout=>8, :poll_interval_average=>nil, :average_scheduled_poll_interval=>15, :error_handlers=>[#<Sidekiq::ExceptionHandler::Logger:0x00000001381200>], :lifecycle_events=>{:startup=>[], :quiet=>[], :shutdown=>[], :heartbeat=>[]}, :dead_max_jobs=>10000, :dead_timeout_in_seconds=>15552000, :reloader=>#<Sidekiq::Rails::Reloader @app=Phototank::Application::ApiApp::Application>, :verbose=>true, :logfile=>"./log/sidekiq.log", :strict=>true, :tag=>"app", :identity=>"8d092f6b4d55:207:36eb73501c9c"}
+2017-06-06T20:55:59.111Z 207 TID-5aro4 DEBUG: Got INT signal
+2017-06-06T20:55:59.112Z 207 TID-5aro4 INFO: Shutting down
+2017-06-06T20:55:59.113Z 207 TID-5aro4 INFO: Terminating quiet workers
+2017-06-06T20:55:59.114Z 207 TID-dygi4 INFO: Scheduler exiting...
+2017-06-06T20:55:59.215Z 207 TID-5aro4 INFO: Pausing to allow workers to finish...
+2017-06-06T20:55:59.825Z 207 TID-5aro4 INFO: Bye!
+2017-06-06T20:56:06.886Z 242 TID-9igzc INFO: Booting Sidekiq 5.0.2 with redis options {:url=>"redis://redis:6379"}
+2017-06-06T20:56:08.298Z 242 TID-9igzc INFO: Running in ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+2017-06-06T20:56:08.298Z 242 TID-9igzc INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2017-06-06T20:56:08.299Z 242 TID-9igzc INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2017-06-06T20:56:08.301Z 242 TID-9igzc DEBUG: Client Middleware: 
+2017-06-06T20:56:08.302Z 242 TID-9igzc DEBUG: Server Middleware: 
+2017-06-06T20:56:08.341Z 242 TID-9igzc DEBUG: {:queues=>["utility"], :labels=>[], :concurrency=>25, :require=>".", :environment=>nil, :timeout=>8, :poll_interval_average=>nil, :average_scheduled_poll_interval=>15, :error_handlers=>[#<Sidekiq::ExceptionHandler::Logger:0x000000020fece8>], :lifecycle_events=>{:startup=>[], :quiet=>[], :shutdown=>[], :heartbeat=>[]}, :dead_max_jobs=>10000, :dead_timeout_in_seconds=>15552000, :reloader=>#<Sidekiq::Rails::Reloader @app=Phototank::Application::ApiApp::Application>, :verbose=>true, :logfile=>"./log/sidekiq.log", :daemon=>true, :strict=>true, :tag=>"app", :identity=>"8d092f6b4d55:242:0d71654c4243"}
+2017-06-06T20:58:43.300Z 242 TID-9igzc DEBUG: Got TERM signal
+2017-06-06T20:58:43.301Z 242 TID-9igzc INFO: Shutting down
+2017-06-06T20:58:43.302Z 242 TID-9igzc INFO: Terminating quiet workers
+2017-06-06T20:58:43.303Z 242 TID-hcw40 INFO: Scheduler exiting...
+2017-06-06T20:58:43.804Z 242 TID-9igzc INFO: Pausing to allow workers to finish...
+2017-06-06T20:58:45.814Z 242 TID-9igzc INFO: Bye!
+2017-06-07T10:42:51.769Z 11 TID-44z98 INFO: Booting Sidekiq 5.0.2 with redis options {:url=>"redis://redis:6379"}
+2017-06-07T10:42:53.846Z 11 TID-44z98 INFO: Running in ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+2017-06-07T10:42:53.847Z 11 TID-44z98 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2017-06-07T10:42:53.847Z 11 TID-44z98 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2017-06-07T10:42:53.850Z 11 TID-44z98 INFO: Loading Schedule
+2017-06-07T10:42:53.851Z 11 TID-44z98 INFO: Scheduling SchedulerMasterImport {"cron"=>"0/30 * * * * *", "class"=>"SchedulerMasterImport", "queue"=>"import"}
+2017-06-07T10:42:53.853Z 11 TID-44z98 INFO: Schedules Loaded
+2017-06-07T10:54:44.061Z 10 TID-39wg0 INFO: Booting Sidekiq 5.0.2 with redis options {:url=>"redis://redis:6379"}
+2017-06-07T10:54:46.205Z 10 TID-39wg0 INFO: Running in ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+2017-06-07T10:54:46.205Z 10 TID-39wg0 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2017-06-07T10:54:46.206Z 10 TID-39wg0 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2017-06-07T10:54:46.216Z 10 TID-39wg0 INFO: Loading Schedule
+2017-06-07T10:54:46.217Z 10 TID-39wg0 INFO: Scheduling SchedulerMasterImport {"cron"=>"0/30 * * * * *", "class"=>"SchedulerMasterImport", "queue"=>"import"}
+2017-06-07T10:54:46.223Z 10 TID-39wg0 INFO: Schedules Loaded
+2017-06-07T10:55:24.574Z 11 TID-3i5j0 INFO: Booting Sidekiq 5.0.2 with redis options {:url=>"redis://redis:6379"}
+2017-06-07T10:55:27.172Z 11 TID-3i5j0 INFO: Running in ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+2017-06-07T10:55:27.173Z 11 TID-3i5j0 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2017-06-07T10:55:27.174Z 11 TID-3i5j0 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2017-06-07T10:55:27.181Z 11 TID-3i5j0 INFO: Loading Schedule
+2017-06-07T10:55:27.182Z 11 TID-3i5j0 INFO: Scheduling SchedulerMasterImport {"cron"=>"0/30 * * * * *", "class"=>"SchedulerMasterImport", "queue"=>"import"}
+2017-06-07T10:55:27.187Z 11 TID-3i5j0 INFO: Schedules Loaded
+2017-06-07T10:56:07.388Z 11 TID-a66bc INFO: Booting Sidekiq 5.0.2 with redis options {:url=>"redis://redis:6379"}
+2017-06-07T10:56:09.378Z 11 TID-a66bc INFO: Running in ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+2017-06-07T10:56:09.379Z 11 TID-a66bc INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2017-06-07T10:56:09.379Z 11 TID-a66bc INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2017-06-07T10:56:09.384Z 11 TID-a66bc INFO: Loading Schedule
+2017-06-07T10:56:09.384Z 11 TID-a66bc INFO: Scheduling SchedulerMasterImport {"cron"=>"0/30 * * * * *", "class"=>"SchedulerMasterImport", "queue"=>"import"}
+2017-06-07T10:56:09.386Z 11 TID-a66bc INFO: Schedules Loaded
+2017-06-07T10:57:54.213Z 10 TID-4851c INFO: Booting Sidekiq 5.0.2 with redis options {:url=>"redis://redis:6379"}
+2017-06-07T10:57:56.501Z 10 TID-4851c INFO: Running in ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+2017-06-07T10:57:56.501Z 10 TID-4851c INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2017-06-07T10:57:56.502Z 10 TID-4851c INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2017-06-07T10:57:56.506Z 10 TID-4851c INFO: Loading Schedule
+2017-06-07T10:57:56.507Z 10 TID-4851c INFO: Scheduling SchedulerMasterImport {"cron"=>"0/30 * * * * *", "class"=>"SchedulerMasterImport", "queue"=>"import"}
+2017-06-07T10:57:56.514Z 10 TID-4851c INFO: Schedules Loaded
+2017-06-07T10:58:00.127Z 10 TID-9k7y0 INFO: queueing SchedulerMasterImport (SchedulerMasterImport)
+2017-06-07T10:58:00.132Z 10 TID-a2kzs SchedulerMasterImport JID-4eb0a53e02c1ddca78ecf95d INFO: start
+2017-06-07T10:58:00.584Z 10 TID-a2kzs SchedulerMasterImport JID-4eb0a53e02c1ddca78ecf95d INFO: done: 0.452 sec
+2017-06-07T10:58:11.453Z 10 TID-a24ls SchedulerMasterImport JID-dd291cf2c7285653aaf4564b INFO: start
+2017-06-07T10:58:11.496Z 10 TID-a1av8 SchedulerMasterImport JID-24a75949a0d7978c1dc368da INFO: start
+2017-06-07T10:58:11.786Z 10 TID-a1a2c SchedulerMasterImport JID-0d1c82370d048f41d8baf44b INFO: start
+2017-06-07T10:58:11.815Z 10 TID-a1lqw SchedulerMasterImport JID-dbde31058d86982e9ec72458 INFO: start
+2017-06-07T10:58:11.935Z 10 TID-a2kzs SchedulerMasterImport JID-1b3549ee143054b40836fa5e INFO: start
+2017-06-07T10:58:12.302Z 10 TID-a24ls SchedulerMasterImport JID-dd291cf2c7285653aaf4564b INFO: done: 0.849 sec
+2017-06-07T10:58:12.307Z 10 TID-a1lqw SchedulerMasterImport JID-dbde31058d86982e9ec72458 INFO: done: 0.492 sec
+2017-06-07T10:58:12.323Z 10 TID-a2kzs SchedulerMasterImport JID-1b3549ee143054b40836fa5e INFO: done: 0.388 sec
+2017-06-07T10:58:12.325Z 10 TID-a1av8 SchedulerMasterImport JID-24a75949a0d7978c1dc368da INFO: done: 0.829 sec
+2017-06-07T10:58:12.329Z 10 TID-a1a2c SchedulerMasterImport JID-0d1c82370d048f41d8baf44b INFO: done: 0.543 sec
+2017-06-07T10:59:00.185Z 10 TID-9k7y0 INFO: queueing SchedulerMasterImport (SchedulerMasterImport)
+2017-06-07T10:59:00.188Z 10 TID-a18s8 SchedulerMasterImport JID-e1e6aeeaddc79e61e53a4420 INFO: start
+2017-06-07T10:59:00.400Z 10 TID-a18s8 SchedulerMasterImport JID-e1e6aeeaddc79e61e53a4420 INFO: done: 0.212 sec
+2017-06-07T11:00:00.273Z 10 TID-9k7y0 INFO: queueing SchedulerMasterImport (SchedulerMasterImport)
+2017-06-07T11:00:00.277Z 10 TID-a18s8 SchedulerMasterImport JID-8a56ec7199a026b9b3b15758 INFO: start
+2017-06-07T11:00:00.419Z 10 TID-a18s8 SchedulerMasterImport JID-8a56ec7199a026b9b3b15758 INFO: done: 0.142 sec
+2017-06-07T11:01:00.018Z 10 TID-9k7y0 INFO: queueing SchedulerMasterImport (SchedulerMasterImport)
+2017-06-07T11:01:00.021Z 10 TID-a1lqw SchedulerMasterImport JID-3cc4992938259bc2bef2c468 INFO: start
+2017-06-07T11:01:00.184Z 10 TID-a1lqw SchedulerMasterImport JID-3cc4992938259bc2bef2c468 INFO: done: 0.163 sec
+2017-06-07T11:01:16.456Z 10 TID-a198w SchedulerMasterImport JID-2d64ccf19038170a8128a0fa INFO: start
+2017-06-07T11:01:16.668Z 10 TID-a198w SchedulerMasterImport JID-2d64ccf19038170a8128a0fa INFO: done: 0.212 sec
+2017-06-07T11:03:30.120Z 10 TID-2fcl0 INFO: Booting Sidekiq 5.0.2 with redis options {:url=>"redis://redis:6379"}
+2017-06-07T11:03:31.927Z 10 TID-2fcl0 INFO: Running in ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+2017-06-07T11:03:31.927Z 10 TID-2fcl0 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2017-06-07T11:03:31.928Z 10 TID-2fcl0 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2017-06-07T11:03:31.933Z 10 TID-2fcl0 INFO: Loading Schedule
+2017-06-07T11:03:31.934Z 10 TID-2fcl0 INFO: Scheduling SchedulerMasterImport {"cron"=>"0/30 * * * * *", "class"=>"SchedulerMasterImport", "queue"=>"import"}
+2017-06-07T11:03:31.937Z 10 TID-2fcl0 INFO: Schedules Loaded
+2017-06-07T11:04:59.995Z 10 TID-8sb6c INFO: Booting Sidekiq 5.0.2 with redis options {:url=>"redis://redis:6379"}
+2017-06-07T11:05:02.663Z 10 TID-8sb6c INFO: Running in ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]
+2017-06-07T11:05:02.663Z 10 TID-8sb6c INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2017-06-07T11:05:02.664Z 10 TID-8sb6c INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2017-06-07T11:05:02.668Z 10 TID-8sb6c INFO: Loading Schedule
+2017-06-07T11:05:02.668Z 10 TID-8sb6c INFO: Scheduling SchedulerMasterImport {"cron"=>"0/30 * * * * *", "class"=>"SchedulerMasterImport", "queue"=>"import"}
+2017-06-07T11:05:02.672Z 10 TID-8sb6c INFO: Schedules Loaded

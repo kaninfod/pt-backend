@@ -1,0 +1,22 @@
+FROM hypriot/rpi-ruby
+
+RUN apt-get update -yqq \
+  && apt-get install -yqq --no-install-recommends \
+   mysql-client libmagic-dev graphicsMagick imagemagick libjpeg-dev exiftool git \
+   build-essential libjpeg-dev libpng-dev libmysqlclient-dev openssh-client \
+   iputils-ping \
+  && rm -rf /var/lib/apt/lists
+
+
+WORKDIR /usr/src/app
+
+COPY Gemfile* ./
+
+RUN gem install bundler
+RUN  bundle install --without test development
+
+COPY . .
+
+EXPOSE 3000
+
+CMD rake resque:start_workers && rails s -p 3000 -b 0.0.0.0

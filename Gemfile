@@ -42,6 +42,10 @@ gem 'acts-as-taggable-on', '~> 4.0'
 gem 'resque'
 gem 'resque-loner'
 gem 'resque-scheduler'
+
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+
 gem 'active_scheduler'
 gem 'sinatra', github: 'sinatra/sinatra'
 
@@ -55,15 +59,15 @@ gem "rails-settings-cached"
 gem 'jwt'
 gem 'simple_command'
 
-
 gem 'concurrent-ruby'
 
-
+gem 'syslogger', '~> 1.6.0'
+gem 'lograge','~> 0.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 
 group :development do

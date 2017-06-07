@@ -8,7 +8,7 @@ module Api
 
     def photos
       @photos = Photo.paginate(:page => params[:page], :per_page=>60)
-      render 'photos/index'
+      render 'api/photos/index'
     end
 
     def create_c
@@ -125,6 +125,7 @@ module Api
     end
 
     def import
+      logger.debug "this is a test - import!"
       catalog = Catalog.find(params[:id])
       response = catalog.import
       render :json => { response: response }

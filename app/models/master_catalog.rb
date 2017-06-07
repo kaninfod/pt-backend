@@ -8,7 +8,7 @@ class MasterCatalog < Catalog
     begin
       job = []
       import_path = Rails.configuration.phototank["incoming"]
-      puts import_path
+      Rails.logger.info "Starting master import"
       # self.watch_path.each do |import_path|
       response = MasterImportSpawn.perform_later import_path, photo_id = nil, import_mode=self.import_mode
       job.push(response)

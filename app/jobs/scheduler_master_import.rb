@@ -1,9 +1,9 @@
 class SchedulerMasterImport < AppJob
-  include Resque::Plugins::UniqueJob
   queue_as :import
 
   def perform()
     begin
+      logger.info "Things are happening."
       master = Catalog.master
       master.import
       @job_db.update(jobable_id: master.id, jobable_type: "Catalog")

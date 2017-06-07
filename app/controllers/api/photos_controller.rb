@@ -22,6 +22,7 @@ module Api
     end
 
     def index
+      logger.debug "this is a test! pt-con"
       album_hash = {}
       @searchparams = {}
 

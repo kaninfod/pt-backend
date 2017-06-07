@@ -1,7 +1,8 @@
 production:
   environment: production
   instance_name: "Hinge"
-  filestorepath: "/media/phototank/photofiles"
+  incoming: "/media/phototank/incoming"
+  filestorepath: "/media/phototank/filestore"
   filestoreurl: "http://192.168.2.103"
   api_base_url: "http://localhost:5000"
 

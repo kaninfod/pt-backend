@@ -29,12 +29,10 @@ Rails.application.routes.draw do
     get '/photos/:id/removetag' => 'photos#removetag'
     get '/photos/:id/show_small' => 'photos#show_small'
 
-
-
     post '/catalogs/create_c'  => 'catalogs#create_c'
     get '/catalogs/oauth_verify'  => 'catalogs#oauth_verify'
-    get  '/catalogs/:id/import' => 'catalogs#import'
-    get  '/catalogs/:id/photos' => 'catalogs#photos'
+    get '/catalogs/:id/import' => 'catalogs#import'
+    get '/catalogs/:id/photos' => 'catalogs#photos'
     resources :catalogs
 
     get '/catalogs/migrate' => 'catalogs#migrate'
@@ -86,12 +84,13 @@ Rails.application.routes.draw do
     post 'jobs/list' => 'jobs#list'
     resources :jobs
   end
-  
+
   Rails.application.routes.draw do
     resources :users, controller: 'users', only: [:create, :edit, :update]
   end
 
-
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   mount Resque::Server.new, at: "/resque"
 

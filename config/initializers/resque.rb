@@ -13,8 +13,11 @@ Resque.schedule  = wrapped_schedule
 
 # SchedulerMasterImport.perform_later
 # Resque.schedule = YAML.load_file("#{Rails.root}/config/resque_scheduler.yml")
-logfile = File.open(File.join(Rails.root, 'log', 'resque.log'), 'a')
-logfile.sync = true
-Resque.logger = ActiveSupport::Logger.new(logfile)
-Resque.logger.level = Logger::DEBUG
-Resque.logger.info "logger initialized"
+# logfile = File.open(File.join(Rails.root, 'log', 'resque.log'), 'a')
+# logfile.sync = true
+#
+# require 'syslogger'
+# require 'logger'
+# Resque.logger = Logger.new(STDOUT)
+# Resque.logger.level = Logger::DEBUG
+# Resque.logger.info "logger initialized"
