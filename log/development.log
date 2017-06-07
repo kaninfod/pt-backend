@@ -15180,3 +15180,17 @@ Completed 200 OK in 876ms (Views: 126.5ms | ActiveRecord: 54.3ms)
 [ActiveJob] [SchedulerMasterImport] [b2545672-c704-43ba-84b5-a34062b58e1f]   [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE `jobs` SET `completed_at` = '2017-06-07 19:56:00', `status` = 0 WHERE `jobs`.`id` = 537[0m
 [ActiveJob] [SchedulerMasterImport] [b2545672-c704-43ba-84b5-a34062b58e1f]   [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
 [ActiveJob] [SchedulerMasterImport] [b2545672-c704-43ba-84b5-a34062b58e1f] Performed SchedulerMasterImport (Job ID: b2545672-c704-43ba-84b5-a34062b58e1f) from Sidekiq(import) in 151.93ms
+[ActiveJob] Enqueued SchedulerMasterImport (Job ID: 944f0e40-d231-4fa3-ae0e-136e4be722d9) to Sidekiq(import)
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9] Performing SchedulerMasterImport (Job ID: 944f0e40-d231-4fa3-ae0e-136e4be722d9) from Sidekiq(import)
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `jobs` (`created_at`, `updated_at`, `job_type`, `queue`, `status`) VALUES ('2017-06-07 19:57:00', '2017-06-07 19:57:00', 'SchedulerMasterImport', 'import', 1)[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[36mCatalog Load (0.5ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` WHERE `catalogs`.`default` = 1 ORDER BY `catalogs`.`id` ASC LIMIT 1[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[36mRailsSettings::ScopedSettings Load (0.5ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`thing_type` = 'Catalog' AND `settings`.`thing_id` = 1 AND `settings`.`var` = 'updating' ORDER BY `settings`.`id` ASC LIMIT 1[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `jobs` SET `jobable_id` = 1, `jobable_type` = 'Catalog' WHERE `jobs`.`id` = 538[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `jobs` SET `completed_at` = '2017-06-07 19:57:00', `status` = 0 WHERE `jobs`.`id` = 538[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9]   [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [SchedulerMasterImport] [944f0e40-d231-4fa3-ae0e-136e4be722d9] Performed SchedulerMasterImport (Job ID: 944f0e40-d231-4fa3-ae0e-136e4be722d9) from Sidekiq(import) in 20.88ms
