@@ -8,8 +8,8 @@ class MasterImportSpawn < AppJob
       dir_blacklist = ['existing']
       ext_whitelist = ['.jpg', '.JPG']
       UtilSetSetting.perform_later 'MasterCatalog', Catalog.master.id, 'updating', true
-      Rails.logger.info "Spawning - rails"
-      Resque.logger.info "Spawning -resque"
+      logger.info "Spawning - rails"
+      logger.info "Spawning -resque"
       Find.find(path) do |path|
         name = File.basename(path)
         if FileTest.directory?(path)

@@ -1,9 +1,9 @@
 
 class PhotoRotate < AppJob
-  include Resque::Plugins::UniqueJob
   queue_as :utility
 
   def perform(photo_id, degrees)
+    Sidekiq.logger.info "rotating image - photo_id: #{photo_id}...s"
     begin
       photo = Photo.find(photo_id)
       new_phash = 0

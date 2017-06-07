@@ -3,7 +3,7 @@ class SchedulerMasterImport < AppJob
 
   def perform()
     begin
-      logger.info "Things are happening."
+      Sidekiq.logger.info "scheduled import commencing"
       master = Catalog.master
       master.import
       @job_db.update(jobable_id: master.id, jobable_type: "Catalog")
