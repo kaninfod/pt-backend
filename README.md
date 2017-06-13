@@ -27,10 +27,6 @@ docker service create --replicas 1 \
 --name redis \
 --network phototankswarm \
 --constraint=node.hostname==pi1 \
---log-driver=syslog \
---log-opt syslog-facility="daemon" \
---log-opt tag="rails" \
---log-opt syslog-address="tcp://logserver:5514" \
 -p 6379:6379 \
 armhf/redis
 ```
@@ -56,10 +52,6 @@ docker service create --replicas 1 \
 --mount type=bind,source=/mnt/fileserver/nginx,destination=/tmp/conf_override \
 -p 80:8080 \
 --constraint=node.hostname==pi1 \
---log-driver=syslog \
---log-opt syslog-facility="daemon" \
---log-opt tag="rails" \
---log-opt syslog-address="tcp://logserver:5514" \
 drakerin/rpi-alpine-nginx
 ```
 
