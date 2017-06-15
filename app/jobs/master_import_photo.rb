@@ -7,6 +7,7 @@ class MasterImportPhoto < AppJob
   IMAGE_LARGE = '1024x1200'
 
   def perform(import_path, photo_id=false, import_mode=true)
+    logger.info("#{self.class.to_s}.#{__method__.to_s} importing #{import_path}")
     begin
       raise "File does not exist" unless File.exist?(import_path)
       data = import_flow(import_path, import_mode)

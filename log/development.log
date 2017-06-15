@@ -9803,3 +9803,101 @@ method=GET path=/api/catalogs/1/import format=*/* controller=api/catalogs action
 [ActiveJob] [UtilSetSetting] [2d2bed7a-4af1-44b3-bbdc-0f6e3969dbcb]   [1m[35mSQL (2.5ms)[0m  [1m[33mUPDATE `jobs` SET `updated_at` = '2017-06-14 16:02:02', `completed_at` = '2017-06-14 16:02:02', `status` = 0 WHERE `jobs`.`id` = 4771[0m
 [ActiveJob] [UtilSetSetting] [2d2bed7a-4af1-44b3-bbdc-0f6e3969dbcb]   [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
 [ActiveJob] [UtilSetSetting] [2d2bed7a-4af1-44b3-bbdc-0f6e3969dbcb] Performed UtilSetSetting (Job ID: 2d2bed7a-4af1-44b3-bbdc-0f6e3969dbcb) from Resque(import) in 212.78ms
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /usr/src/app/config/initializers/new_framework_defaults.rb:15)
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /usr/src/app/config/initializers/new_framework_defaults.rb:15)
+  [1m[35m (21.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /usr/src/app/config/initializers/new_framework_defaults.rb:15)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.45ms)
+method=GET path=/api/catalogs.json format=json controller=api/catalogs action=index status=401 duration=286.64 view=177.46 db=0.00
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /usr/src/app/config/initializers/new_framework_defaults.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :tag_taggings, class_name: 'ActsAsTaggableOn::Tagging'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :tags, class_name: 'ActsAsTaggableOn::Tag'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :objective_taggings, class_name: 'ActsAsTaggableOn::Tagging'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :objectives, class_name: 'ActsAsTaggableOn::Tag'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+  [1m[35m (2.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mSetting Load (13.9ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE (thing_type is NULL and thing_id is NULL) AND `settings`.`var` = 'namespace' ORDER BY `settings`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (11.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@mail.com' LIMIT 1[0m
+  [1m[36mCACHE User Load (3.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@mail.com' LIMIT 1[0m  [["email", "example@mail.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'example@mail.com' LIMIT 1[0m  [["email", "example@mail.com"], ["LIMIT", 1]]
+  [1m[35m (5.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (41.1ms)[0m  [1m[33mUPDATE `users` SET `remember_token` = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE0OTc1OTYzNDh9.zeqQMUnBeLrxsBhUwMwFGLeqnEKDB08P4nBSa4lKA2U', `updated_at` = '2017-06-15 06:59:08' WHERE `users`.`id` = 4[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.15ms)
+method=POST path=/api/authenticate format=*/* controller=api/authentication action=authenticate status=200 duration=1368.93 view=3.61 db=90.01
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :tag_taggings, class_name: 'ActsAsTaggableOn::Tagging'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :tags, class_name: 'ActsAsTaggableOn::Tag'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :objective_taggings, class_name: 'ActsAsTaggableOn::Tagging'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :objectives, class_name: 'ActsAsTaggableOn::Tag'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mSetting Load (0.8ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE (thing_type is NULL and thing_id is NULL) AND `settings`.`var` = 'namespace' ORDER BY `settings`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[36mCatalog Load (14.3ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` ORDER BY `catalogs`.`id` ASC LIMIT 30 OFFSET 0[0m
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :tag_taggings, class_name: 'ActsAsTaggableOn::Tagging'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :tags, class_name: 'ActsAsTaggableOn::Tag'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :objective_taggings, class_name: 'ActsAsTaggableOn::Tagging'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+DEPRECATION WARNING: Passing a class to the `class_name` is deprecated and will raise an ArgumentError in Rails 5.2. It eagerloads more classes than necessary and potentially creates circular dependencies. Please pass the class name as a string: `has_many :objectives, class_name: 'ActsAsTaggableOn::Tag'` (called from <class:Photo> at /usr/src/app/app/models/photo.rb:15)
+  [1m[35m (7.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `photos` INNER JOIN `instances` ON `photos`.`id` = `instances`.`photo_id` WHERE `instances`.`catalog_id` = 1[0m
+  [1m[36mPhoto Load (15.5ms)[0m  [1m[34mSELECT  `photos`.* FROM `photos` INNER JOIN `instances` ON `photos`.`id` = `instances`.`photo_id` WHERE `instances`.`catalog_id` = 1 ORDER BY `photos`.`id` ASC LIMIT 1[0m
+method=GET path=/api/catalogs.json format=json controller=api/catalogs action=index status=200 duration=1018.58 view=796.77 db=54.98
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[36mPhotofile Load (0.6ms)[0m  [1m[34mSELECT  `photofiles`.* FROM `photofiles` WHERE `photofiles`.`id` = 2 LIMIT 1[0m
+method=GET path=/api/photofiles/2/photoserve format=html controller=api/photofiles action=photoserve status=200 duration=115.60 view=0.00 db=5.29
+DEPRECATION WARNING: ActiveSupport.halt_callback_chains_on_return_false= is deprecated and will be removed in Rails 5.2. (called from <top (required)> at /usr/src/app/config/initializers/new_framework_defaults.rb:15)
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  [1m[36mCatalog Load (0.6ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` WHERE `catalogs`.`id` = 1 LIMIT 1[0m
+  [1m[36mRailsSettings::ScopedSettings Load (0.6ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`thing_type` = 'Catalog' AND `settings`.`thing_id` = 1 AND `settings`.`var` = 'updating' ORDER BY `settings`.`id` ASC LIMIT 1[0m
+Starting master import from MasterCatalog
+[ActiveJob] Enqueued MasterImportSpawn (Job ID: 0608ba77-292c-4961-949c-82309f61dab3) to Resque(import) with arguments: "/media/phototank/incoming", nil, nil
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+method=GET path=/api/catalogs/1/import format=*/* controller=api/catalogs action=import status=200 duration=456.67 view=73.11 db=17.26
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3] Performing MasterImportSpawn (Job ID: 0608ba77-292c-4961-949c-82309f61dab3) from Resque(import) with arguments: "/media/phototank/incoming", nil, nil
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35m (1.1ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35mSQL (5.4ms)[0m  [1m[32mINSERT INTO `jobs` (`created_at`, `updated_at`, `job_type`, `arguments`, `queue`, `status`) VALUES ('2017-06-15 07:01:20', '2017-06-15 07:01:20', 'MasterImportSpawn', '---\n- \"/media/phototank/incoming\"\n- \n- \n', 'import', 1)[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35m (3.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3] starting now...MasterImportSpawn.perform
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[36mCatalog Load (0.5ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` WHERE `catalogs`.`default` = 1 ORDER BY `catalogs`.`id` ASC LIMIT 1[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3] Enqueued UtilSetSetting (Job ID: 81468e72-975a-4d90-bce3-decf9c073f6e) to Resque(import) with arguments: "MasterCatalog", 1, "updating", true
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[36mCACHE Catalog Load (0.0ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` WHERE `catalogs`.`default` = 1 ORDER BY `catalogs`.`id` ASC LIMIT 1[0m  [["default", 1], ["LIMIT", 1]]
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3] Enqueued UtilSetSetting (Job ID: 5020f0da-3b70-4e83-9485-1ba1779d8ebb) to Resque(import) with arguments: "MasterCatalog", 1, "updating", false
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[36mCACHE Catalog Load (0.0ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` WHERE `catalogs`.`default` = 1 ORDER BY `catalogs`.`id` ASC LIMIT 1[0m  [["default", 1], ["LIMIT", 1]]
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35mSQL (4.2ms)[0m  [1m[33mUPDATE `jobs` SET `jobable_id` = 1, `jobable_type` = 'Catalog' WHERE `jobs`.`id` = 4772[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `jobs` SET `completed_at` = '2017-06-15 07:01:20', `status` = 0 WHERE `jobs`.`id` = 4772[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3]   [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [MasterImportSpawn] [0608ba77-292c-4961-949c-82309f61dab3] Performed MasterImportSpawn (Job ID: 0608ba77-292c-4961-949c-82309f61dab3) from Resque(import) in 184.55ms
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e] Performing UtilSetSetting (Job ID: 81468e72-975a-4d90-bce3-decf9c073f6e) from Resque(import) with arguments: "MasterCatalog", 1, "updating", true
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `jobs` (`created_at`, `updated_at`, `job_type`, `arguments`, `queue`, `status`) VALUES ('2017-06-15 07:01:21', '2017-06-15 07:01:21', 'UtilSetSetting', '---\n- MasterCatalog\n- 1\n- updating\n- true\n', 'import', 1)[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[36mMasterCatalog Load (0.5ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` WHERE `catalogs`.`type` IN ('MasterCatalog') AND `catalogs`.`id` = 1 LIMIT 1[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[36mRailsSettings::ScopedSettings Load (0.5ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`thing_type` = 'Catalog' AND `settings`.`thing_id` = 1 AND `settings`.`var` = 'updating' ORDER BY `settings`.`id` ASC LIMIT 1[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `settings` SET `value` = '--- true\n...\n', `updated_at` = '2017-06-15 07:01:21' WHERE `settings`.`id` = 10[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[36mCatalog Load (0.5ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` WHERE `catalogs`.`id` = 1 LIMIT 1[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `jobs` SET `completed_at` = '2017-06-15 07:01:21', `status` = 0 WHERE `jobs`.`id` = 4773[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e]   [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [UtilSetSetting] [81468e72-975a-4d90-bce3-decf9c073f6e] Performed UtilSetSetting (Job ID: 81468e72-975a-4d90-bce3-decf9c073f6e) from Resque(import) in 179.69ms
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb] Performing UtilSetSetting (Job ID: 5020f0da-3b70-4e83-9485-1ba1779d8ebb) from Resque(import) with arguments: "MasterCatalog", 1, "updating", false
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `jobs` (`created_at`, `updated_at`, `job_type`, `arguments`, `queue`, `status`) VALUES ('2017-06-15 07:01:21', '2017-06-15 07:01:21', 'UtilSetSetting', '---\n- MasterCatalog\n- 1\n- updating\n- false\n', 'import', 1)[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[36mMasterCatalog Load (0.6ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` WHERE `catalogs`.`type` IN ('MasterCatalog') AND `catalogs`.`id` = 1 LIMIT 1[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[36mRailsSettings::ScopedSettings Load (1.2ms)[0m  [1m[34mSELECT  `settings`.* FROM `settings` WHERE `settings`.`thing_type` = 'Catalog' AND `settings`.`thing_id` = 1 AND `settings`.`var` = 'updating' ORDER BY `settings`.`id` ASC LIMIT 1[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE `settings` SET `value` = '--- false\n...\n' WHERE `settings`.`id` = 10[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[36mCatalog Load (0.6ms)[0m  [1m[34mSELECT  `catalogs`.* FROM `catalogs` WHERE `catalogs`.`id` = 1 LIMIT 1[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE `jobs` SET `completed_at` = '2017-06-15 07:01:21', `status` = 0 WHERE `jobs`.`id` = 4774[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb] Performed UtilSetSetting (Job ID: 5020f0da-3b70-4e83-9485-1ba1779d8ebb) from Resque(import) in 163.92ms

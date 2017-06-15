@@ -3,7 +3,7 @@
   queue_as :import
 
   def perform(path, photo_id= nil, import_mode=true)
-    logger.info("starting now...")
+    logger.info("#{self.class.to_s}.#{__method__.to_s} importing #{path}")
     Resque.logger.info("starting now...R")
     begin
       require 'find'
