@@ -125,7 +125,6 @@ module Api
     end
 
     def import
-      logger.debug "this is a test - import!"
       catalog = Catalog.find(params[:id])
       response = catalog.import
       render :json => { response: response }

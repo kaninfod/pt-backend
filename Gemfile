@@ -43,8 +43,11 @@ gem 'resque'
 gem 'resque-loner'
 gem 'resque-scheduler'
 
-gem 'sidekiq'
-gem 'sidekiq-scheduler'
+# gem 'sidekiq'
+# gem 'sidekiq-scheduler'
+
+# gem 'backburner'
+# gem 'beanstalkd_view'
 
 gem 'active_scheduler'
 gem 'sinatra', github: 'sinatra/sinatra'
@@ -62,7 +65,7 @@ gem 'simple_command'
 gem 'concurrent-ruby'
 
 gem 'syslogger', '~> 1.6.0'
-gem 'lograge','~> 0.3.1'
+gem 'lograge'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -71,6 +74,11 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry_debug'
+
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

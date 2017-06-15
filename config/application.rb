@@ -28,8 +28,8 @@ module Phototank
     config.api_only = true
 
     # TODO: this should be put into an initializer
-    config.active_job.queue_adapter = :sidekiq
-    # config.active_job.queue_adapter = :resque
+    #config.active_job.queue_adapter = :backburner
+    config.active_job.queue_adapter = :resque
     config.flickr = config_for(:app_flickr)
     config.dropbox = config_for(:app_dropbox)
     config.phototank = config_for(:app_phototank)
@@ -42,6 +42,6 @@ module Phototank
       end
     end
 
-    config.logger = Logger.new(STDOUT)
+    # config.logger = Logger.new(STDOUT)
   end
 end

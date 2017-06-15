@@ -46,8 +46,8 @@ Rails.application.configure do
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.file_watcher = ActiveSupport::FileUpdateChecker
 
-
-  # 
+  ENV['BEANSTALK_URL'] = 'beanstalk://beanstalk'
+  #
   # Rails.logger = Logger.new(STDOUT)
   # Rails.logger.level = 0
 

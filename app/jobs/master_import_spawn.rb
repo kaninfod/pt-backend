@@ -1,15 +1,15 @@
-class MasterImportSpawn < AppJob
+  class MasterImportSpawn < AppJob
   include Resque::Plugins::UniqueJob
   queue_as :import
 
   def perform(path, photo_id= nil, import_mode=true)
+    logger.info("starting now...")
+    Resque.logger.info("starting now...R")
     begin
       require 'find'
       dir_blacklist = ['existing']
       ext_whitelist = ['.jpg', '.JPG']
       UtilSetSetting.perform_later 'MasterCatalog', Catalog.master.id, 'updating', true
-      logger.info "Spawning - rails"
-      logger.info "Spawning -resque"
       Find.find(path) do |path|
         name = File.basename(path)
         if FileTest.directory?(path)

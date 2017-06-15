@@ -89,11 +89,7 @@ Rails.application.routes.draw do
     resources :users, controller: 'users', only: [:create, :edit, :update]
   end
 
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
-
   mount Resque::Server.new, at: "/resque"
-
   root to: 'photos#index'
 
 end
