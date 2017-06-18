@@ -3,17 +3,13 @@ class MasterCatalog < Catalog
   validates :type, uniqueness: true
 
   def import
-    return if self.settings.updating == true
+    #return if self.settings.updating == true
 
     begin
-      job = []
-      import_path = Rails.configuration.phototank["incoming"]
       logger.info "Starting master import from MasterCatalog"
-      # self.watch_path.each do |import_path|
+      import_path = Rails.configuration.phototank["incoming"]
+
       response = MasterImportSpawn.perform_later import_path, photo_id = nil, import_mode=self.import_mode
-      job.push(response)
-      # end
-      return job
     rescue Exception => e
       return e
     end
