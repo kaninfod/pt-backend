@@ -9901,3 +9901,5 @@ method=GET path=/api/catalogs/1/import format=*/* controller=api/catalogs action
 [ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE `jobs` SET `completed_at` = '2017-06-15 07:01:21', `status` = 0 WHERE `jobs`.`id` = 4774[0m
 [ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb]   [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
 [ActiveJob] [UtilSetSetting] [5020f0da-3b70-4e83-9485-1ba1779d8ebb] Performed UtilSetSetting (Job ID: 5020f0da-3b70-4e83-9485-1ba1779d8ebb) from Resque(import) in 163.92ms
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.21ms)
+method=GET path=/api/photofiles/2/photoserve format=html controller=api/photofiles action=photoserve status=401 duration=246.53 view=116.41 db=0.00
