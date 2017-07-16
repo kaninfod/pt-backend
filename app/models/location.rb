@@ -1,18 +1,9 @@
 class Location < ActiveRecord::Base
   validates :latitude, :longitude, :country, presence: true
   has_many :photos
+  belongs_to :country
+  belongs_to :city
   reverse_geocoded_by :latitude, :longitude
-
-  scope :distinct_countries, -> {
-    ary = select(:country).distinct.map { |c| c.country }.unshift('All')
-    ary.delete([nil])
-    ary.sort_by{|el| el[0] }
-  }
-  scope :distinct_cities, -> {
-    ary = select(:city).distinct.map { |c| [c.city] }.unshift([''])
-    ary.delete([nil])
-    ary.sort_by{|el| el[0] }
-  }
 
   def self.geolocate
     Photo.where{location_id.eq(nil)}.each do |photo|
@@ -59,8 +50,8 @@ class Location < ActiveRecord::Base
   def geocoder_lookup
     if geo_location = Geocoder.search(self.coordinate_string).first
       if geo_location.data["error"].blank?
-        self.country = geo_location.country
-        self.city = geo_location.city
+        self.country = Country.find_or_create_by(name: geo_location.country)
+        self.city = City.find_or_create_by(name: geo_location.city)
         self.suburb = geo_location.suburb
         self.postcode = geo_location.postal_code
         self.address = geo_location.address
@@ -72,69 +63,21 @@ class Location < ActiveRecord::Base
   end
 
   private
-  # def self.no_coordinates()
-  #   if @photo.latitude.blank? || @photo.longitude.blank?
-  #     @photo.location = get_no_location
-  #     return true
-  #   end
-  # end
-  #
-  # def self.reuse_location()
-  #   similar_locations = @photo.nearbys(1).where.not(location_id: nil)
-  #   if similar_locations.count(:all) > 0
-  #     @photo.location = similar_locations.first.location
-  #     return true
-  #   end
-  # end
-
-  # def self.geosearch
-  #
-  #   begin
-  #     if geo_location = Geocoder.search(@photo.coordinate_string).first
-  #       if geo_location.data["error"].blank?
-  #         new_location = Location.new
-  #         new_location.country = geo_location.country
-  #         new_location.city = geo_location.city
-  #         new_location.suburb = geo_location.suburb
-  #         new_location.postcode = geo_location.postal_code
-  #         new_location.address = geo_location.address
-  #         new_location.state = geo_location.state
-  #         new_location.longitude = geo_location.longitude
-  #         new_location.latitude = geo_location.latitude
-  #         new_location.save
-  #         @photo.location = new_location
-  #         return true
-  #       else
-  #         @photo.location = temp_location
-  #       end
-  #     else
-  #       @photo.location = temp_location
-  #     end
-  #   rescue Exception => e
-  #     @photo.location = temp_location
-  #   end
-  # end
-
 
   def self.get_no_location
     loc = Location.where(status:100)
     if loc.length > 0
       return loc.first
     else
-      loc = Location.create(latitude:0, longitude:0, country:"N/A", status:100)
+      loc = Location.create(
+        latitude:0,
+        longitude:0,
+        country:Country.find_or_create_by(name: "N/A"),
+        country:City.find_or_create_by(name: "N/A"),
+        status:100
+      )
       return loc
     end
   end
-
-  # def self.temp_location
-  #   loc = Location.where(status:200)
-  #   if loc.length > 0
-  #     return loc.first
-  #   else
-  #     loc = Location.create(latitude:0, longitude:0, country:"N/A", status:200)
-  #     return loc
-  #   end
-  # end
-
 
 end

@@ -2,27 +2,27 @@ module Api
   class PhotosController < ApplicationController
     include BucketActions
     set_pagination_headers :photos, only: [:index]
+    before_action :set_photo, only: [:add_to_album]
 
-    def image
-      @photo = set_photo
-      send_file @photo.get_photo(params[:size]), :disposition => 'inline'
-    end
+    # def image
+    #   @photo = set_photo
+    #   send_file @photo.get_photo(params[:size]), :disposition => 'inline'
+    # end
 
-    def valid_date
-      d = params[:date].to_date
-      case params[:type]
-      when 'day'
-        ary = Photo.days(d.year, d.month).map{ |f| f.value }
-      when 'month'
-        ary = Photo.months(d.year).map{ |f| f.value }
-      when 'year'
-        ary = Photo.years.map{ |f| f.value }
-      end
-      render json: ary
-    end
+    # def valid_date
+    #   d = params[:date].to_date
+    #   case params[:type]
+    #   when 'day'
+    #     ary = Photo.days(d.year, d.month).map{ |f| f.value }
+    #   when 'month'
+    #     ary = Photo.months(d.year).map{ |f| f.value }
+    #   when 'year'
+    #     ary = Photo.years.map{ |f| f.value }
+    #   end
+    #   render json: ary
+    # end
 
     def index
-      logger.debug "this is a test! pt-con"
       album_hash = {}
       @searchparams = {}
 
@@ -44,7 +44,7 @@ module Api
       end
 
       if params.has_key? "country"
-        album_hash[:country] = params[:country] unless params[:country] == "All"
+        album_hash[:country] = params[:country] unless params[:country] == "-1"
       end
 
       if params.has_key? "like"
@@ -57,9 +57,11 @@ module Api
           album_hash[:tags] = tags
         end
       end
+
       @album = Album.new(album_hash)
+      logger.debug album_hash
       #Get photos
-      @photos = @album.photos.where('photos.status != ? or photos.status is ?', 1, nil).order(date_taken: order).paginate(:page => params[:page], :per_page=>60)
+      @photos = @album.album_photos.where('photos.status != ? or photos.status is ?', 1, nil).order(date_taken: order).paginate(:page => params[:page], :per_page=>60)
 
       #@bucket = Bucket.where(user: @current_user.id)
     end
@@ -72,6 +74,7 @@ module Api
       end
       @photo = Photo.find(params[:id])
       @bucket = session[:bucket]
+      @taglist = ActsAsTaggableOn::Tag.all
       @albums = Album.all
     end
 
@@ -117,6 +120,11 @@ module Api
 
     end
 
+    # def add_to_album
+    #   album = Album.find(params[:album_id])
+    #   album.add_photos([@photo.id])
+    # end
+
     def add_comment
       photo_id = params[:id]
       if params.has_key? "comment"
@@ -153,7 +161,6 @@ module Api
     end
 
     def removetag
-
       photo = Photo.find params[:id]
 
       if params[:name][0,1] == "@"
@@ -189,55 +196,55 @@ module Api
 
     private
 
-    def set_date(query)
-      start = {:year=>Date.today.year, :month=>Date.today.month, :day=>Date.today.day}
-      if query != nil
-        [:year, :month, :day].each do |t|
-          start[t]=query[t].to_i unless not query.has_key?(t)
-        end
-      end
-
-      if query == nil
-        @searchbox = {
-            :type=>"all",
-            :values => Photo.years}
-      elsif query.has_key?(:day)
-        @searchbox = {
-            :type => "day",
-            :values => Photo.days(start[:year], start[:month])}
-      elsif query.has_key?(:month)
-        @searchbox = {
-            :type=>"month",
-            :values => Photo.days(start[:year], start[:month])}
-      elsif query.has_key?(:year)
-        @searchbox = {
-            :type=>"year",
-            :values => Photo.months(start[:year])}
-      else
-        @searchbox = {
-            :type=>"all",
-            :values => Photo.years}
-      end
-      @searchbox[:day] = start[:day]
-      @searchbox[:month] = start[:month]
-      @searchbox[:year] = start[:year]
-      start = Date.new(start[:year], start[:month], start[:day])
-
-    end
+    # def set_date(query)
+    #   start = {:year=>Date.today.year, :month=>Date.today.month, :day=>Date.today.day}
+    #   if query != nil
+    #     [:year, :month, :day].each do |t|
+    #       start[t]=query[t].to_i unless not query.has_key?(t)
+    #     end
+    #   end
+    #
+    #   if query == nil
+    #     @searchbox = {
+    #         :type=>"all",
+    #         :values => Photo.years}
+    #   elsif query.has_key?(:day)
+    #     @searchbox = {
+    #         :type => "day",
+    #         :values => Photo.days(start[:year], start[:month])}
+    #   elsif query.has_key?(:month)
+    #     @searchbox = {
+    #         :type=>"month",
+    #         :values => Photo.days(start[:year], start[:month])}
+    #   elsif query.has_key?(:year)
+    #     @searchbox = {
+    #         :type=>"year",
+    #         :values => Photo.months(start[:year])}
+    #   else
+    #     @searchbox = {
+    #         :type=>"all",
+    #         :values => Photo.years}
+    #   end
+    #   @searchbox[:day] = start[:day]
+    #   @searchbox[:month] = start[:month]
+    #   @searchbox[:year] = start[:year]
+    #   start = Date.new(start[:year], start[:month], start[:day])
+    #
+    # end
 
     def album_params
       params.require(:album).permit(:start, :end, :name, :make, :model, :country, :city, :photo_ids, :album_type)
     end
 
-    def getCountries
-      @countries = Location.distinct_countries
-      @countries[0] = "All"
-      #@bucket = session[:bucket]
-    end
+    # def getCountries
+    #   @countries = Location.distinct_countries
+    #   @countries[0] = "All"
+    #   #@bucket = session[:bucket]
+    # end
 
       # Use callbacks to share common setup or constraints between actions.
       def set_photo
-        Photo.find(params[:id])
+        @photo = Photo.find(params[:id])
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.

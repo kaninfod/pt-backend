@@ -22,3 +22,9 @@ json.albums @albums do |album|
   json.name album.name
 end
 json.current_user @current_user
+
+json.taglist @taglist do |tag|
+  json.id tag.id
+  json.name tag.name
+  json.count tag.taggings_count
+end

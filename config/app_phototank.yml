@@ -4,7 +4,7 @@ production:
   incoming: "/media/phototank/incoming"
   filestorepath: "/media/phototank/filestore"
   filestoreurl: "http://192.168.2.103"
-  api_base_url: "http://localhost:5000"
+  api_base_url: "http://localhost:3000"
 
 development:
   environment: development
@@ -12,11 +12,11 @@ development:
   incoming: "/media/phototank/incoming"
   filestorepath: "/media/phototank/filestore"
   filestoreurl: "http://localhost:5001"
-  api_base_url: "http://localhost:5000"
+  api_base_url: "http://localhost:3000"
 
 test:
   environment: test
   instance_name: "test_Hingex"
   filestorepath: "/Users/martinhinge/Pictures/test_migrate"
   filestoreurl: "http://localhost:5001"
-  api_base_url: "http://localhost:5000"
+  api_base_url: "http://localhost:3000"

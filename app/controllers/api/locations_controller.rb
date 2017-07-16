@@ -2,8 +2,13 @@ module Api
   class LocationsController < ApplicationController
 
     def countries
-      @countries = Location.distinct_countries
+      @countries = Country.all
     end
+
+    def cities
+      @cities = City.all
+    end
+
 
     def index
       if request.xhr?

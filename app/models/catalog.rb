@@ -8,7 +8,7 @@ class Catalog < ActiveRecord::Base
   has_many :jobs, as: :jobable
   belongs_to  :user
 
-  scope :photos, -> { Photo.joins(:instances).where('catalog_id=?', self.id) }
+  # scope :photos, -> { Photo.joins(:instances).where('catalog_id=?', self.id) }
 
   validate :only_one_master_catalog
 

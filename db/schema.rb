@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415181823) do
+ActiveRecord::Schema.define(version: 20170702201047) do
 
   create_table "albums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "name"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20170415181823) do
     t.string "album_type"
     t.string "tags", default: "--- []\n"
     t.boolean "like"
+  end
+
+  create_table "albums_photos", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "album_id"
+    t.bigint "photo_id"
+    t.index ["album_id"], name: "index_albums_photos_on_album_id"
+    t.index ["photo_id"], name: "index_albums_photos_on_photo_id"
   end
 
   create_table "buckets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -50,6 +57,10 @@ ActiveRecord::Schema.define(version: 20170415181823) do
     t.integer "user_id"
   end
 
+  create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+  end
+
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "title", limit: 50, default: ""
     t.text "comment"
@@ -62,6 +73,10 @@ ActiveRecord::Schema.define(version: 20170415181823) do
     t.index ["commentable_id"], name: "index_comments_on_commentable_id"
     t.index ["commentable_type"], name: "index_comments_on_commentable_type"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
   end
 
   create_table "instances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -95,16 +110,18 @@ ActiveRecord::Schema.define(version: 20170415181823) do
     t.decimal "latitude", precision: 16, scale: 10
     t.decimal "longitude", precision: 16, scale: 10
     t.string "location"
-    t.string "country"
     t.string "state"
     t.string "address"
     t.string "road"
-    t.string "city"
     t.string "suburb"
     t.string "postcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "map_image_id"
+    t.bigint "country_id"
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_locations_on_city_id"
+    t.index ["country_id"], name: "index_locations_on_country_id"
   end
 
   create_table "photofiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -199,4 +216,6 @@ ActiveRecord::Schema.define(version: 20170415181823) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
+  add_foreign_key "locations", "cities"
+  add_foreign_key "locations", "countries"
 end

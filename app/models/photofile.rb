@@ -1,3 +1,10 @@
+# payload = {
+#   :date=> @data[:date_taken],
+#   :path=> file.path,
+#   :filetype=> "date",
+#   :size=> size}
+# pf = Photofile.create(data: payload)
+
 class Photofile < ActiveRecord::Base
   attr_accessor :data, :url, :datahash, :phash
   before_create :import

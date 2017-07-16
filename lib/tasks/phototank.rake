@@ -22,10 +22,10 @@ namespace :phototank do
 
   desc "add generic photos (eg missing)"
   task Add_generic_photo: :environment do
-    pf = PhotoFilesApi::Api::new
+
     ['tm', 'md', 'lg'].each do |ext|
-      image_path = File.join(Rails.root,'app','assets','images', "generic_#{ext}.jpg")
-      response = pf.create image_path, nil, nil, 'generic_image'
+      image_path = File.join(Rails.root,'config', 'setup', "generic_#{ext}.jpg")
+      response = Photofile.create(data: {:path => image_path, :filetype => 'generic_image', :size => ext})
       Setting["generic_image_#{ext}_id"] = response[:id]
     end
 

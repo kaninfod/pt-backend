@@ -51,7 +51,13 @@ class UtilLocator < AppJob
     if loc.length > 0
       return loc.first
     else
-      loc = Location.create(latitude:0, longitude:0, country:"N/A", status:100)
+      loc = Location.create(
+        latitude:0,
+        longitude:0,
+        country:Country.find_or_create_by(name: "N/A"),
+        country:City.find_or_create_by(name: "N/A"),
+        status:100
+      )
       return loc
     end
   end
@@ -75,8 +81,9 @@ class UtilLocator < AppJob
     if geo_location = Geocoder.search(@photo.coordinate_string).first
       if geo_location.data["error"].blank?
         new_location = Location.new
-        new_location.country = geo_location.country
-        new_location.city = geo_location.city
+
+        new_location.country = Country.find_or_create_by(name: geo_location.country)
+        new_location.city = City.find_or_create_by(name: geo_location.city)
         # new_location.suburb = geo_location.suburb
         new_location.postcode = geo_location.postal_code
         new_location.address = geo_location.address

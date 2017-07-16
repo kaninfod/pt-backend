@@ -1,17 +1,25 @@
 module Api
   class CatalogsController < ApplicationController
     set_pagination_headers :photos, only: [:photos]
+    before_action :set_catalog, only: [:show, :update, :destroy, :photos, :oauth_verify]
+    include Response
+    include ExceptionHandler
 
     def index
         @catalogs = Catalog.order(:id).page params[:page]
     end
 
     def photos
-      @photos = Photo.paginate(:page => params[:page], :per_page=>60)
+      @photos = @catalog.photos.paginate(:page => params[:page], :per_page=>60)
+      #Photo.paginate(:page => params[:page], :per_page=>60)
       render 'api/photos/index'
     end
 
-    def create_c
+    # def create
+    #
+    # end
+
+    def create
       name = params[:name]
       type = params[:type]
 
@@ -22,67 +30,33 @@ module Api
         when 'LocalCatalog'
 
         when 'DropboxCatalog'
-          catalog = DropboxCatalog.new(
-            name: params[:name],
-            sync_from_catalog: params[:sync_from_catalog],
-            user_id: @current_user.id
-          )
-          catalog.redirect_uri = request.base_url
-          catalog.save
-          catalog.auth
+          @catalog= Catalog.create!(catalog_params)
+          @catalog.redirect_uri = request.base_url
+          @catalog.user_id = @current_user.id
+          @catalog.save
+          @catalog.auth
         when 'FlickrCatalog'
-          catalog = FlickrCatalog.new(
-            name: params[:name],
-            sync_from_catalog: params[:sync_from_catalog],
-            user_id: @current_user.id
-          )
-          catalog.redirect_uri = request.base_url
-          catalog.save
-          catalog.auth
+          @catalog= Catalog.create!(catalog_params)
+          @catalog.redirect_uri = request.base_url
+          @catalog.user_id = @current_user.id
+          @catalog.save
+          @catalog.auth
       end
-      @catalog = catalog
-      render "catalogs/show" #:json => { catalog: catalog }
+
+      render "api/catalogs/show"
 
     end
 
     def oauth_verify
-      id = params[:id]
       verifier = params[:oauth_verifier]
-      @catalog = Catalog.find(id)
 
       @catalog.update(verifier: verifier)
       if @catalog.callback
-        render "catalogs/show" #json: {:status=> 200, catalog: Catalog.find(id) }
+        render "api/catalogs/show"
       else
         render json: {:status=> 502}
       end
     end
-
-    # def create
-    #   if ["DropboxCatalog", "FlickrCatalog"].include? params[:catalog][:type]
-    #     redirect_to "/catalogs/authorize?name=#{params[:catalog][:name]}&type=#{params[:catalog][:type]}"
-    #   else
-    #     @catalog = Catalog.new(catalog_params)
-    #     if @catalog.save
-    #       redirect_to action: 'edit', id:@catalog
-    #     end
-    #   end
-    # end
-
-    # def edit
-    #   @catalog = Catalog.find(params[:id])
-    #   @catalog_options = [
-    #     ['Master','MasterCatalog'],
-    #     ['Local','LocalCatalog'],
-    #     ['Dropbox','DropboxCatalog'],
-    #     ['Flickr','FlickrCatalog']
-    #   ]
-    #   if @catalog.sync_from_albums.blank?
-    #     @sync_from="catalog"
-    #   else
-    #     @sync_from="album"
-    #   end
-    # end
 
     def update
       catalog = Catalog.find(params[:id])
@@ -173,6 +147,21 @@ module Api
 
     private
 
+    private
+
+      def catalog_params
+        params.require(:catalog).permit(:name, :type, :sync_from_catalog, :oauth_verifier)
+      end
+
+      def set_catalog
+        @catalog = Catalog.find(params[:id])
+      end
+
+
+
+
+
+
     def update_master
       catalog_attribs = params.permit(:name, :type, :path, :import_mode)
       catalog_attribs['watch_path'] = generate_watch_path
@@ -214,7 +203,7 @@ module Api
     end
 
     def set_catalog
-      Catalog.find(params[:id])
+      @catalog = Catalog.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

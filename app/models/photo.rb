@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
   before_destroy :_delete
   before_update :move_by_date, if: :date_taken_changed?
   belongs_to :location
+  has_and_belongs_to_many :albums
 
   has_many :instances
   has_many :catalogs, through: :instances
@@ -76,7 +77,7 @@ class Photo < ActiveRecord::Base
 
   def self.null_photo
     id = Setting.generic_image_md_id
-    "api/photofiles/#{id}/photoserve"
+    "/api/photofiles/#{id}/photoserve"
   end
 
   def similar(similarity=1, count=3)
@@ -159,8 +160,17 @@ class Photo < ActiveRecord::Base
   end
 
   def url(size)
-    url = "/api"#Rails.configuration.x.phototank["filestoreurl"]
+    url = "/api" #Rails.configuration.x.phototank["filestoreurl"]
     "#{url}/photofiles/#{self.send("#{size}_id")}/photoserve"
+  end
+
+  def add_to_album(album_id)
+    if Album.where(id: album_id).first
+      album = Album.find(album_id)
+      album.photos << self
+    end
+
+
   end
 
   private

@@ -1,7 +1,8 @@
 class Album < ActiveRecord::Base
   serialize :photo_ids, Array
   serialize :tags, Array
-
+  has_and_belongs_to_many :photos, -> { distinct }
+  validates :name, presence: true
   def count
     return photos.count
   end
@@ -11,8 +12,22 @@ class Album < ActiveRecord::Base
     photos[r]
   end
 
-  def photos
-    result = Photo.joins(join_location).joins(join_tagging).joins(join_vote).where(conditions).distinct(:id)
+  def add_photos(photo_ids)
+      if photo = Photo.where(id: photo_ids)
+        self.photos << photo unless self.photos.include?(photo_ids)
+      end
+  end
+
+  def album_photos
+    result = Photo
+                .joins(join_location)
+                .joins(join_tagging)
+                .joins(join_vote)
+                .joins(join_album_photo)
+                .where(conditions)
+                .distinct(:id)
+    # result_p = self.photos
+    # result_p + result
   end
 
   def conditions
@@ -25,7 +40,8 @@ class Album < ActiveRecord::Base
       [:_make,      "and"],
       [:_tagging,   "and"],
       [:_vote,      "and"],
-      [:_photo_ids,  "or"]
+      [:_album,     "or"],
+      # [:_photo_ids,  "or"]
     ]
 
     expressions.each do |method, operator|
@@ -55,20 +71,20 @@ class Album < ActiveRecord::Base
   end
 
   def _country
-    t_location[:country].eq(self.country) unless self.country.blank?
+    t_location[:country_id].eq(self.country) unless (self.country.blank? || self.country == "-1")
   end
 
   def _city
-    t_location[:city].eq(self.country) unless self.city.blank?
+    t_location[:city_id].eq(self.city) unless (self.city.blank? || self.city == "-1")
   end
 
   def _make
     t_photo[:make].eq(self.make) unless self.make.blank?
   end
 
-  def _photo_ids
-    t_photo[:id].in(self.photo_ids) unless self.photo_ids.length == 0
-  end
+  # def _photo_ids
+  #   t_photo[:id].in(self.photo_ids) unless self.photo_ids.length == 0
+  # end
 
   def _tagging
     t_tagging[:tag_id].in(self.tags) unless self.tags.length == 0
@@ -78,6 +94,10 @@ class Album < ActiveRecord::Base
     if self.like == true
       t_vote[:votable_id].gt(0)
     end
+  end
+
+  def _album
+    t_album_photo[:album_id].eq(self.id) unless self.id.blank?
   end
 
   def join_location
@@ -93,6 +113,15 @@ class Album < ActiveRecord::Base
   def join_vote
     constraint_vote = t_vote.create_on(t_photo[:id].eq(t_vote[:votable_id]))
     t_photo.create_join(t_vote, constraint_vote, Arel::Nodes::OuterJoin)
+  end
+
+  def join_album_photo
+    constraint_album_photo = t_album_photo.create_on(t_photo[:id].eq(t_album_photo[:photo_id]))
+    t_photo.create_join(t_album_photo, constraint_album_photo, Arel::Nodes::OuterJoin)
+  end
+
+  def t_album_photo
+    Arel::Table.new("albums_photos")
   end
 
   def t_photo

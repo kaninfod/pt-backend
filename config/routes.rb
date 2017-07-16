@@ -10,10 +10,14 @@ Rails.application.routes.draw do
     patch 'photofiles/:id/rotate' => 'photofiles#rotate'
     get 'photofiles/:id/phash' => 'photofiles#phash'
 
-    match 'albums/select' => 'albums/select', via: [:get, :post]
-    get '/albums/:album/photo/:photo/add' => "albums#add_photo"
-    get '/albums/get_tag_list' => "albums#get_tag_list"
+
+
+    put '/albums/:id/photo/:photo' => "albums#add_photo"
+    get '/albums/:id/photos' => 'albums#photos'
     resources :albums
+
+    match 'albums/select' => 'albums/select', via: [:get, :post]
+    get '/albums/get_tag_list' => "albums#get_tag_list"
 
     get 'pages' => 'pages#index'
 
@@ -29,7 +33,9 @@ Rails.application.routes.draw do
     get '/photos/:id/removetag' => 'photos#removetag'
     get '/photos/:id/show_small' => 'photos#show_small'
 
-    post '/catalogs/create_c'  => 'catalogs#create_c'
+
+
+    post '/catalogs/create'  => 'catalogs#create'
     get '/catalogs/oauth_verify'  => 'catalogs#oauth_verify'
     get '/catalogs/:id/import' => 'catalogs#import'
     get '/catalogs/:id/photos' => 'catalogs#photos'
@@ -47,6 +53,7 @@ Rails.application.routes.draw do
     # match '/catalogs/:id/import' => 'catalogs#import', via: [:get, :post]
 
     get '/locations/countries'
+    get '/locations/cities'
     get '/locations/create'
     get '/locations/new'
     get '/locations/lookup_address'
