@@ -68,12 +68,12 @@ Rails.application.routes.draw do
     post    'bucket/add_to_album'   => 'bucket#add_to_album'
     delete  'bucket/:id/remove'     => 'bucket#remove'
     post    'bucket/like'           => 'bucket#like'
-    post    'bucket/unlike'         => 'bucket#unlike'
     get     'bucket/widget'         => 'bucket#widget'
     post    '/bucket/rotate'        => 'bucket#rotate'
     post    'bucket/add_comment'    => 'bucket#add_comment'
     post    'bucket/add_tag'    => 'bucket#add_tag'
 
+    post    'bucket/unlike'         => 'bucket#unlike'
     get  'bucket/list' => 'bucket#list'
     get  'bucket' => 'bucket#index'
     get  'bucket/clear' => 'bucket#clear'

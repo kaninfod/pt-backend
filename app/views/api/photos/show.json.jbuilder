@@ -9,14 +9,14 @@ json.photo do
   json.url_org      @photo.url('org')
   json.tags         @photo.tags
   json.like         @current_user.voted_for? @photo
+  json.partial! 'api/photos/comments', comments: @photo.comments
   json.location do
     json.address @photo.location.address
     json.country @photo.location.country
     json.map_url @photo.location.map_url
   end
 end
-json.partial! 'api/photos/comments', comments: @photo.comments
-json.tags         @photo.tags
+
 json.albums @albums do |album|
   json.id album.id
   json.name album.name

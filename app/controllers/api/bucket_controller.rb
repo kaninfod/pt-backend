@@ -61,10 +61,10 @@ module Api
       }
     end
 
-    def clear
-      session[:bucket] = []
-      redirect_to bucket_path
-    end
+    # def clear
+    #   session[:bucket] = []
+    #   redirect_to bucket_path
+    # end
 
     def count
       render :json => {'count' => session[:bucket].count}
@@ -75,25 +75,32 @@ module Api
     end
 
     def widget
+      @taglist = ActsAsTaggableOn::Tag.all
       @bucket = Bucket.where(user: @current_user.id)
       @albums = Album.all
     end
 
     def add_to_album
+
       if params.has_key? :album_id
+        album = Album.find params[:album_id]
         bucket = Bucket.where(user: @current_user.id)
-        if params[:album_id].to_i == -1
-          album = Album.new
-          album.name = "Saved from bucket"
-          album.photo_ids = bucket.pluck(:id)
-          album.save
-        else
-          album = Album.find params[:album_id]
-          album.photo_ids = [*album.photo_ids, *bucket.pluck(:id)]
-          album.save
-        end
+        album.add_photos bucket.pluck(:id)
       end
-      render :json => {:status => "OK"}
+      # if params.has_key? :album_id
+      #   bucket = Bucket.where(user: @current_user.id)
+      #   if params[:album_id].to_i == -1
+      #     album = Album.new
+      #     album.name = "Saved from bucket"
+      #     album.photo_ids = bucket.pluck(:id)
+      #     album.save
+      #   else
+      #     album = Album.find params[:album_id]
+      #     album.photo_ids = [*album.photo_ids, *bucket.pluck(:id)]
+      #     album.save
+      #   end
+      # end
+      # render :json => {:status => "OK"}
 
     end
 

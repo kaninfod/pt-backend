@@ -24,7 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
-gem "active_model_serializers"
+# gem "active_model_serializers"
 
 #added
 gem 'will_paginate'
@@ -37,7 +37,7 @@ gem 'ruby-filemagic'
 
 gem 'acts_as_commentable'
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'acts-as-taggable-on', '~> 4.0'
+gem 'acts-as-taggable-on', '~> 5.0'
 
 gem 'resque'
 gem 'resque-loner'

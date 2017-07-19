@@ -13,7 +13,8 @@ class Location < ActiveRecord::Base
 
   def map_url
     if self.map_image_id == nil
-      "api/photofiles/1/photoserve"
+      id = Setting.generic_image_md_id
+      "/api/photofiles/#{id}/photoserve"
     else
       "api/photofiles/#{self.map_image_id}/photoserve"
     end
@@ -73,7 +74,7 @@ class Location < ActiveRecord::Base
         latitude:0,
         longitude:0,
         country:Country.find_or_create_by(name: "N/A"),
-        country:City.find_or_create_by(name: "N/A"),
+        city:City.find_or_create_by(name: "N/A"),
         status:100
       )
       return loc
