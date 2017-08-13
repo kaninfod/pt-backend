@@ -15,7 +15,7 @@ Start the mysql service:
 docker service create --replicas 1 \
 --name db -p 3306:3306 \
 --network phototankswarm \
---env-file $PWD/.env.prod \
+--env-file $PWD/pt_api/.env.prod \
 --mount type=bind,source=/mnt/fileserver/mysql,destination=/var/lib/mysql \
 --constraint=node.hostname==pi2 \
 hypriot/rpi-mysql
@@ -37,8 +37,8 @@ Start rails service:
 docker service create --replicas 1 \
 --name app -p 3000:3000 \
 --network phototankswarm \
---env-file $PWD/.env.prod \
---mount type=bind,source=/mnt/fileserver/pt-backend,destination=/usr/src/app \
+--env-file $PWD/pt_api/.env.prod \
+--mount type=bind,source=/mnt/fileserver/pt_api,destination=/usr/src/app \
 --mount type=bind,source=/mnt/fileserver/phototank,destination=/media/phototank \
 --constraint=node.hostname==pi0 \
 kaninfod/pt-rails
